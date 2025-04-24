@@ -26,7 +26,14 @@ const Form = ({ onSuccess, onError }) => {
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
-      
+      const { firstName, lastName, type, email, message } = inputValue;
+
+    if (!firstName || !lastName || !type || !email || !message) {
+      alert("veuillez remplir tous les champs avant d’envoyer le formulaire.");
+      return;
+    }
+
+
       setSending(true);
       // We try to call mockContactApi
       try {

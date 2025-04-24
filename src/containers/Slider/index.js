@@ -10,7 +10,7 @@ const Slider = () => {
 
   const [index, setIndex] = useState(0); // Index slide actuellement affiché
 
-  const byDateDesc = data?.focus.sort((evtA, evtB) =>
+  const byDateDesc = [...(data?.focus || [])].sort((evtA, evtB) =>
  // ancien code => new Date(evtA.date) < new Date(evtB.date) ? -1 : 1
  // Correction plus ancien au plus recent
     new Date(evtA.date) < new Date(evtB.date) ? 1 : -1
