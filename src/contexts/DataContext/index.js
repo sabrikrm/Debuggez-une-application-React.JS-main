@@ -37,6 +37,7 @@ export const DataProvider = ({ children }) => {
       value={{
         data,
         error,
+        last: data?.at?.(-1) || (Array.isArray(data) ? data[data.length - 1] : null)
       }}
     >
       {children}
