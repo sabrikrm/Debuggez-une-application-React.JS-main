@@ -116,13 +116,16 @@ const Page = () => {
     <footer className="row">
       <div className="col presta">
         <h3>Notre derniére prestation</h3>
-        <EventCard
-            imageSrc={last?.cover || "/images/hall-expo.png"} // img brut exemple
-            title={last?.title || "La dernière conference"}
-            date={last?.date ? new Date(last.date) : new Date()}
+        
+            <EventCard
+            imageSrc={last?.cover}
+            title={last?.title}
+            date={new Date(last?.date)}
             small
             label="boom"
           />
+          
+          
       </div>
       <div className="col contact">
         <h3>Contactez-nous</h3>
