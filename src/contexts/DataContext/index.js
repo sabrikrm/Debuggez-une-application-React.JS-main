@@ -37,7 +37,8 @@ export const DataProvider = ({ children }) => {
       value={{
         data,
         error,
-        last: data?.focus?.at?.(-1)
+        last: data?.focus?.[data.focus.length - 1]
+
       }}
     >
       {children}

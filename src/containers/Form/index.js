@@ -26,27 +26,31 @@ const Form = ({ onSuccess, onError }) => {
   const sendContact = useCallback(
     async (evt) => {
       evt.preventDefault();
-      const { firstName, lastName, type, email, message } = inputValue;
-
-    if (!firstName || !lastName || !type || !email || !message) {
-      alert("veuillez remplir tous les champs avant d’envoyer le formulaire.");
-      return;
-    }
-
+      
+      if (
+        !inputValue.firstName.trim() ||
+        !inputValue.lastName.trim() ||
+        !inputValue.type.trim() ||
+        !inputValue.email.trim() ||
+        !inputValue.message.trim()
+      ) {
+        alert("Veuillez remplir tous les champs.");
+        return;
+      }
+  
 
       setSending(true);
       // We try to call mockContactApi
       try {
         await mockContactApi();
-        onSuccess(); // on success pour message apparition
-
+        onSuccess();
         setSending(false);
       } catch (err) {
         setSending(false);
         onError(err);
       }
     },
-    [onSuccess, onError]
+    [inputValue, onSuccess, onError]
   );
   console.log("imputvalue",inputValue)
   return (
