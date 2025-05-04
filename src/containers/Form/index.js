@@ -27,6 +27,7 @@ const Form = ({ onSuccess, onError }) => {
     async (evt) => {
       evt.preventDefault();
       
+      
       if (
         !inputValue.firstName.trim() ||
         !inputValue.lastName.trim() ||

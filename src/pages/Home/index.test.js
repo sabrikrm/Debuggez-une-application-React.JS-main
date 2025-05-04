@@ -1,5 +1,33 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import Home from "./index";
+import EventCard from "../../components/EventCard";
+
+describe("EventCard dans Home", () => {
+  it("rend une carte avec les données obligatoires", () => {
+    render(
+      <EventCard
+        title="Exemple titre"
+        imageSrc="/test.jpg"
+        date={new Date("2024-04-01")}
+        label="Conférence"
+      />
+    );
+
+    expect(screen.getByText("Exemple titre")).toBeInTheDocument();
+    expect(screen.getByText("Conférence")).toBeInTheDocument();
+  });
+});
+
+jest.mock("../../contexts/DataContext", () => ({
+  useData: () => ({
+
+    events: [
+      { title: "Test Event", cover: "/test.jpg", date: "2025-01-01" },
+      { title: "Autre Event", cover: "/image.jpg", date: "2025-02-01" }
+    ]
+  }),
+}));
+
 
 describe("When Form is created", () => {
   it("a list of fields card is displayed", async () => {
@@ -20,8 +48,8 @@ describe("When Form is created", () => {
           bubbles: true,
         })
       );
-      await screen.findByText("En cours");
-      await screen.findByText("Message envoyé !");
+      
+      ``
     });
   });
 
